@@ -14,16 +14,14 @@ import java.util.HashSet;
  * @author David J. Barnes and Michael Kölling.
  * @version 2016.02.29
  */
-public class SupportSystem
-{
+public class SupportSystem {
     private InputReader reader;
     private Responder responder;
     
     /**
      * Creates a technical support system.
      */
-    public SupportSystem()
-    {
+    public SupportSystem() {
         reader = new InputReader();
         responder = new Responder();
     }
@@ -32,8 +30,7 @@ public class SupportSystem
      * Start the technical support system. This will print a welcome message and enter
      * into a dialog with the user, until the user ends the dialog.
      */
-    public void start()
-    {
+    public void start() {
         boolean finished = false;
 
         printWelcome();
@@ -43,8 +40,7 @@ public class SupportSystem
 
             if(input.contains("bye")) {
                 finished = true;
-            }
-            else {
+            } else {
                 String response = responder.generateResponse(input);
                 System.out.println(response);
             }
@@ -55,8 +51,7 @@ public class SupportSystem
     /**
      * Print a welcome message to the screen.
      */
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println("Welcome to the DodgySoft Technical Support System.");
         System.out.println();
         System.out.println("Please tell us about your problem.");
@@ -67,8 +62,7 @@ public class SupportSystem
     /**
      * Print a good-bye message to the screen.
      */
-    private void printGoodbye()
-    {
+    private void printGoodbye() {
         System.out.println("Nice talking to you. Bye...");
     }
 }

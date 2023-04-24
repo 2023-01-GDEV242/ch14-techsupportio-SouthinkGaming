@@ -17,8 +17,7 @@ import java.util.*;
  * @author David J. Barnes and Michael Kölling.
  * @version 2016.02.29
  */
-public class Responder
-{
+public class Responder {
     // Used to map key words to responses.
     private HashMap<String, String> responseMap;
     // Default responses to use if we don't recognise a word.
@@ -30,8 +29,7 @@ public class Responder
     /**
      * Construct a Responder
      */
-    public Responder()
-    {
+    public Responder() {
         responseMap = new HashMap<>();
         defaultResponses = new ArrayList<>();
         fillResponseMap();
@@ -45,8 +43,7 @@ public class Responder
      * @param words  A set of words entered by the user
      * @return       A string that should be displayed as the response
      */
-    public String generateResponse(HashSet<String> words)
-    {
+    public String generateResponse(HashSet<String> words) {
         Iterator<String> it = words.iterator();
         while(it.hasNext()) {
             String word = it.next();
@@ -65,8 +62,7 @@ public class Responder
      * Enter all the known keywords and their associated responses
      * into our response map.
      */
-    private void fillResponseMap()
-    {
+    private void fillResponseMap() {
         responseMap.put("crash", 
                         "Well, it never crashes on our system. It must have something\n" +
                         "to do with your system. Tell me more about your configuration.");
@@ -119,8 +115,7 @@ public class Responder
      * Build up a list of default responses from which we can pick
      * if we don't know what else to say.
      */
-    private void fillDefaultResponses()
-    {
+    private void fillDefaultResponses() {
         Charset charset = Charset.forName("US-ASCII");
         Path path = Paths.get(FILE_OF_DEFAULT_RESPONSES);
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
@@ -129,11 +124,9 @@ public class Responder
                 defaultResponses.add(response);
                 response = reader.readLine();
             }
-        }
-        catch(FileNotFoundException e) {
+        } catch(FileNotFoundException e) {
             System.err.println("Unable to open " + FILE_OF_DEFAULT_RESPONSES);
-        }
-        catch(IOException e) {
+        } catch(IOException e) {
             System.err.println("A problem was encountered reading " +
                                FILE_OF_DEFAULT_RESPONSES);
         }
@@ -147,8 +140,7 @@ public class Responder
      * Randomly select and return one of the default responses.
      * @return     A random default response
      */
-    private String pickDefaultResponse()
-    {
+    private String pickDefaultResponse() {
         // Pick a random number for the index in the default response list.
         // The number will be between 0 (inclusive) and the size of the list (exclusive).
         int index = randomGenerator.nextInt(defaultResponses.size());
