@@ -9,15 +9,13 @@ import java.util.Scanner;
  * @author David J. Barnes and Michael Kölling.
  * @version 2016.02.29
  */
-public class InputReader
-{
+public class InputReader {
     private Scanner reader;
 
     /**
      * Create a new InputReader that reads text from the text terminal.
      */
-    public InputReader()
-    {
+    public InputReader() {
         reader = new Scanner(System.in);
     }
 
@@ -28,8 +26,7 @@ public class InputReader
      * @return  A set of Strings, where each String is one of the 
      *          words typed by the user
      */
-    public HashSet<String> getInput() 
-    {
+    public HashSet<String> getInput() {
         System.out.print("> ");                // print prompt
         String inputLine = reader.nextLine().trim().toLowerCase();
 
